@@ -2,4 +2,4 @@
 /build
 /mongosh
 /coverage
-.emv
+.env
