@@ -5,9 +5,11 @@ import authRoute from '../routes/auth.route'
 import cookieParser from 'cookie-parser'
 import profileRoute from '../routes/profile.route'
 import postRoute from "../routes/post.route"
+import { RedisCache } from '../library/Cache'
 
 const createServer = () => {
     const router = express()
+    let cache = new RedisCache(60)
 
     router.use((req, res, next) => {
         /**Log req */

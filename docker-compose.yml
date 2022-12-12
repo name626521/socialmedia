@@ -1,0 +1,26 @@
+version: '3'
+services:
+  backend-api:
+    container_name: docker-backend-api
+    build: .
+    ports:
+      - "8000:8000"
+    links:
+      - mongo
+    depends_on:
+      - mongo
+    restart: always
+    volumes:
+      - .:/app
+      - nodemodules:/app/node_modules
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - "27017:27017"
+    restart: always
+    volumes:
+      - mongo_db_container:/data/db
+volumes:
+  mongo_db_container: 
+  nodemodules: 
